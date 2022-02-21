@@ -20,10 +20,11 @@ now_day_cpy = datetime.datetime.today().weekday() #the number of day now copy to
 
 while True:
 
-    cmd = input("What settings do you want to change? :\n" "(1) time\n" "(2) song\n" "(3) day\n" "(4) alarm on\n" "(5) alarm off\n")
+    cmd = input("What settings do you want to change? :\n" "(1) time  " "(2) song  " "(3) day\n" "(4) alarm on  " "(5) alarm off  " "(6) check settings\n")
 
     if cmd == str(1):
 
+        print("---------------------------")
         change_time = input(str("Please enter the time you want to change to ex.10:27 : "))
         with open("settings.json", "r", encoding="utf8") as jfile:
             jdata = json.load(jfile)
@@ -35,6 +36,7 @@ while True:
 
     elif cmd == str(2):
 
+        print("---------------------------")
         change_song = input(str("Please enter the song you want to change to ex.high_on_life.mp3 : "))
         with open("settings.json", "r", encoding="utf8") as jfile:
             jdata = json.load(jfile)
@@ -46,6 +48,7 @@ while True:
 
     elif cmd == str(3):
 
+        print("---------------------------")
         change_day_cmd = input(str("(1) weekdays\n" "(2) weekends\n" "(3) everyday\n" "Please enter the day you want the alarm to be activate : \n"))
 
         if change_day_cmd == str(1):
@@ -79,6 +82,7 @@ while True:
             
     elif cmd == str(4):
 
+        print("---------------------------")
         while True:
 
             now_time = datetime.datetime.now().strftime("%H:%M") #the time now
@@ -97,10 +101,21 @@ while True:
                 sleep(10)
 
     elif cmd == str(5):
+        print("---------------------------")
         break
 
-    # testing use
     elif cmd == str(6):
+
+        print("---------------------------")
+        with open("settings.json", "r", encoding="utf8") as jfile:
+            jdata = json.load(jfile)
+        for key in jdata:
+            print(jdata[key])
+
+    # testing use
+    elif cmd == str(7):
+        
+        print("---------------------------")
         print(is_week_day(now_day))
         print(now_day)
         print(which_day)
