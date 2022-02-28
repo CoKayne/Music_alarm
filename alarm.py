@@ -114,7 +114,7 @@ while True:
 
     # testing use
     elif cmd == str(7):
-        
+
         print("---------------------------")
         print(is_week_day(now_day))
         print(now_day)
