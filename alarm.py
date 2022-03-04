@@ -147,8 +147,13 @@ while True:
         with open("settings.json", "r", encoding="utf8") as jfile:
             jdata = json.load(jfile)
 
-        for key in jdata:
-            print(jdata[key])
+        nonochars = "{\}'"
+        string_jdata = str(jdata)
+
+        for chars in nonochars:
+            string_jdata = string_jdata.replace(chars, "")
+
+        print(string_jdata)
 
     # testing use
     elif cmd == str(7):
