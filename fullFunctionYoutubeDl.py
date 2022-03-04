@@ -1,3 +1,4 @@
+import os
 import pafy
 from pydub import AudioSegment
 import re
@@ -38,25 +39,43 @@ class Yt:
         bestaudio.download()
 
     def convert_file(self):
-        # song_name = input(str("Please enter the name of your song ex.The Chainsmokers - High (Official Lyric Video) : "))
-        song = AudioSegment.from_file(self.song_name + ".webm")
+        unconvert_song = str()
+        for files in os.listdir("./"):
+            if files.startswith(self.song_name):
+                unconvert_song = files
+        song = AudioSegment.from_file(unconvert_song)
         print("Loaded")
         song.export(self.song_name + ".mp3", format="mp3", bitrate="320k")
         print("Converted and saved")
+
+    def remove_webm_file(self):
+        for file_name in os.listdir("./"):
+            if "m4a" in file_name or "webm" in file_name:
+                os.remove(file_name)
  
 keep_searching = bool(True)
 
 while keep_searching == True:
+
     music_to_search = input(str("Please enter the song you want to search : "))
+
     youtube = Yt(music_to_search)
     youtube.find_youtube_video()
+
     cmd = input(str("Is this the song you want to search ? [y/n] : "))
+
     if cmd == "y":
         keep_searching = False
         break
+
     elif cmd == "n":
         keep_searching = True
 
+    else:
+        print("Please enter with only y or n")
+        keep_searching = True
+
 if keep_searching == False:
-    youtube.youtube_dl()
-    youtube.convert_file()   
+    youtube.youtube_dl() 
+    youtube.convert_file()  
+    youtube.remove_webm_file()
