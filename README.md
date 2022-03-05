@@ -1,8 +1,11 @@
 # Music_alarm
 ---
-This is a music alarm made by me.
-It now has to functions : 
-1. music alarm
-2. find youtube videos and download
+A simple alarm that will not play siren or ringtone but a customize music the user choose.
+This project is mainly created by Python.
 
-still developing...
+---
+## Table of Contents
+---
+General info
+Techonologies
+Setup
