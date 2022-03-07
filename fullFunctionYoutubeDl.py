@@ -57,7 +57,7 @@ keep_searching = bool(True)
 
 while keep_searching == True:
 
-    music_to_search = input(str("Please enter the song you want to search : "))
+    music_to_search = input(str("Please enter the song / URL you want to search : "))
 
     youtube = Yt(music_to_search)
     youtube.find_youtube_video()
