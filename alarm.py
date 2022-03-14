@@ -4,7 +4,7 @@ import json
 from time import sleep
 from pygame import mixer
 
-with open("settings.json", "r", encoding = "utf8") as jfile: #open json for init
+with open("alarm_settings.json", "r", encoding = "utf8") as jfile: #open json for init
     jdata = json.load(jfile)
     
 def is_week_day(week_number): #judge whether it is weekdays
@@ -29,12 +29,12 @@ while True:
         print("---------------------------")
         change_time = input(str("Please enter the time you want to change to ex.10:27 : "))
 
-        with open("settings.json", "r", encoding="utf8") as jfile:
+        with open("alarm_settings.json", "r", encoding="utf8") as jfile:
             jdata = json.load(jfile)
 
         jdata["TIME"] = change_time
 
-        with open("settings.json", "w", encoding="utf8") as jfile:
+        with open("alarm_settings.json", "w", encoding="utf8") as jfile:
             json.dump(jdata, jfile, indent=4)
 
         alarm_time = jdata["TIME"]
@@ -47,7 +47,7 @@ while True:
         song_list = {}
         keep_choosing = bool(True)
 
-        with open("settings.json", "r", encoding="utf8") as jfile:
+        with open("alarm_settings.json", "r", encoding="utf8") as jfile:
             jdata = json.load(jfile)
 
         for file_name in os.listdir("./"):
@@ -67,7 +67,7 @@ while True:
                 print("Song not found, please try again !")
                 keep_choosing = True 
 
-        with open("settings.json", "w", encoding="utf8") as jfile:
+        with open("alarm_settings.json", "w", encoding="utf8") as jfile:
             json.dump(jdata, jfile, indent=4)
 
         song = jdata["SONG"]
@@ -80,12 +80,12 @@ while True:
 
         if change_day_cmd == str(1):
 
-            with open("settings.json", "r", encoding="utf8") as jfile:
+            with open("alarm_settings.json", "r", encoding="utf8") as jfile:
                 jdata = json.load(jfile)
 
             jdata["DAY_NUM"] = True
 
-            with open("settings.json", "w", encoding="utf8") as jfile:
+            with open("alarm_settings.json", "w", encoding="utf8") as jfile:
                 json.dump(jdata, jfile, indent=4)
 
             which_day = jdata["DAY_NUM"]
@@ -93,24 +93,24 @@ while True:
 
         elif change_day_cmd == str(2):
 
-            with open("settings.json", "r", encoding="utf8") as jfile:
+            with open("alarm_settings.json", "r", encoding="utf8") as jfile:
                 jdata = json.load(jfile)
 
             jdata["DAY_NUM"] = False
 
-            with open("settings.json", "w", encoding="utf8") as jfile:
+            with open("alarm_settings.json", "w", encoding="utf8") as jfile:
                 json.dump(jdata, jfile, indent=4)
 
             which_day = jdata["DAY_NUM"]
 
         elif change_day_cmd == str(3):
 
-            with open("settings.json", "r", encoding="utf8") as jfile:
+            with open("alarm_settings.json", "r", encoding="utf8") as jfile:
                 jdata = json.load(jfile)
 
             jdata["DAY_NUM"] = is_week_day(now_day_cpy)
 
-            with open("settings.json", "w", encoding="utf8") as jfile:
+            with open("alarm_settings.json", "w", encoding="utf8") as jfile:
                 json.dump(jdata, jfile, indent=4)
 
             which_day = jdata["DAY_NUM"]
@@ -144,7 +144,7 @@ while True:
 
         print("---------------------------")
 
-        with open("settings.json", "r", encoding="utf8") as jfile:
+        with open("alarm_settings.json", "r", encoding="utf8") as jfile:
             jdata = json.load(jfile)
 
         nonochars = "{\}'"
